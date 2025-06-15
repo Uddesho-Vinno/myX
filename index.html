@@ -14,7 +14,7 @@
         }
 
         body {
-            background-color: grey; /* সাদা ব্যাকগ্রাউন্ড */
+            background-color: grey;
             padding: 10px;
             display: flex;
             flex-direction: column;
@@ -44,7 +44,7 @@
         }
 
         .advice-container {
-            background-color: orange; /* হালকা গ্রে */
+            background-color: #f5f5f5;
             padding: 10px 15px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -67,6 +67,7 @@
             grid-template-rows: repeat(2, 1fr);
             gap: 10px;
             flex-grow: 1;
+            height: calc(100vh - 150px); /* ফিক্সড হাইট */
         }
 
         #section4 {
@@ -77,13 +78,14 @@
         }
 
         .section {
-            background-color: #333; /* মিডিয়াম গ্রে সেকশন কালার */
+            background-color: #333;
             border-radius: 8px;
             padding: 15px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            height: 100%; /* প্যারেন্টের সম্পূর্ণ হাইট নেয় */
         }
 
         .section-heading {
@@ -130,7 +132,8 @@
             list-style: none;
             overflow-y: auto;
             flex-grow: 1;
-            min-height: 0;
+            min-height: 100px; /* ন্যূনতম হাইট */
+            max-height: calc(100% - 100px); /* হেডিং এবং ইনপুটের জন্য জায়গা রাখে */
         }
 
         .task-item {
@@ -185,6 +188,7 @@
             background-color: #d32f2f;
         }
 
+        /* স্ক্রলবার স্টাইল */
         .task-list::-webkit-scrollbar {
             width: 8px;
         }
@@ -375,17 +379,14 @@
                     hour12: true
                 };
                 
-                // Update time
                 document.getElementById('time').textContent = now.toLocaleTimeString('en-US', options);
                 
-                // Update day
                 const dayOptions = { 
                     timeZone: 'Asia/Dhaka',
                     weekday: 'long'
                 };
                 document.getElementById('day').textContent = now.toLocaleDateString('en-US', dayOptions);
                 
-                // Update date
                 const dateOptions = { 
                     timeZone: 'Asia/Dhaka',
                     year: 'numeric',
